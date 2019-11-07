@@ -45,18 +45,20 @@ function chart (id, csv) {
 
   csv.forEach(function (r) {
     r.forEach(function (c, i) {
-      columns[i].push(parseInt(c, 10))
+      columns[i].push(parseFloat(c, 10))
     })
   })
 
   var opts = {
     bindto: '#' + id,
     data: {
+      // use first column as x value
+      x: columns[0][0],
       columns: columns,
       type: 'line'
     },
     point: { show: false },
-    axis: { x: { show: false } },
+    axis: { x: { show: true } },
     legend: { show: showLegend }
   }
 
